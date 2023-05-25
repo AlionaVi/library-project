@@ -13,9 +13,9 @@
         </li>
         <#list books as book>
         <li class="table-row">
-            <div class="col col-1">${book.id}</div>
-            <div class="col col-2">${book.name}</div>
-            <div class="col col-3">${book.genre}</div>
+            <div class="col col-4">${book.id}</div>
+            <div class="col col-5">${book.name}</div>
+            <div class="col col-6">${book.genre}</div>
         </li>
         </#list>
     </ul>
