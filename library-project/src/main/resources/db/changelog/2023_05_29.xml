@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="init db2" author="Aliona Kalenda">
+        <sql>
+            Create table if not exists users (
+            id bigserial PRIMARY KEY,
+            login varchar NOT NULL,
+            password varchar NOT NULL,
+            roles varchar NOT NULL
+            );
+
+            Insert into users(login, password, roles) values
+            ('InnaVol', 'Password1', 'reader'),
+            ('PetrSt', 'Password2', 'reader'),
+            ('DimaTot', 'Password3', 'admin'),
+            ('ViktorViktor', 'Password4', 'reader');
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>
