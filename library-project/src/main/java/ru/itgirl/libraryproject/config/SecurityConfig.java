@@ -1,4 +1,5 @@
 package ru.itgirl.libraryproject.config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import ru.itgirl.libraryproject.dto.UsersDto;
+import ru.itgirl.libraryproject.model.Users;
 import ru.itgirl.libraryproject.repository.UsersRepository;
 
 @Configuration
@@ -36,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return login -> {
-            UsersDto user = usersRepository.findByLogin(login);
+            Users user = usersRepository.findByLogin(login);
             if (user == null) {
                 throw new UsernameNotFoundException("User not found");
             }

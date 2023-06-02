@@ -1,16 +1,14 @@
 package ru.itgirl.libraryproject.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Entity
+@Data
 
 public class Users {
 
@@ -26,4 +24,6 @@ public class Users {
 
     @Column (nullable = false)
     private String roles;
-}
+
+  }
+
