@@ -1,4 +1,5 @@
 # library-project
+![image](https://github.com/AlionaVi/library-project/assets/126494415/9234be81-0b11-4ea7-a33c-29c39f8a3ad8)
 ![image](https://github.com/AlionaVi/library-project/assets/126494415/c1161e42-478e-418f-bc6e-4af0e42daa4e)
 ![authors](https://github.com/AlionaVi/library-project/assets/126494415/43bb497f-a726-4964-8bbd-68698a0a70ec)
 ![снимок1](https://github.com/AlionaVi/library-project/assets/126494415/524af15a-13a7-4af1-8f42-754bfdcb3f14)
