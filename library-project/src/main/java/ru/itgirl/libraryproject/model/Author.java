@@ -14,6 +14,7 @@ import java.util.Set;
 public class Author {
 
     @Id
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,6 +26,7 @@ public class Author {
     @Column(nullable = false)
     private String surname;
 
+    @Setter
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books;
 

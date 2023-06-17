@@ -19,7 +19,7 @@ public interface AuthorService {
 
     AuthorDto updateAuthor (AuthorUpdateDto authorUpdateDto);
 
-    void deleteAuthor (Long id);
+    AuthorDto deleteAuthor (Long id);
 
     List<AuthorDto> getAllAuthors();
 

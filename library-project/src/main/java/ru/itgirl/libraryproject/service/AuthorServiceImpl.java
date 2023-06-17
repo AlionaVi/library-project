@@ -118,48 +118,50 @@ public class AuthorServiceImpl implements AuthorService {
             throw new IllegalStateException("Author not update");
         }
     }
-        @Override
-        public void deleteAuthor (Long id){
-            log.info("Deleting author: {}", id);
-            authorRepository.deleteById(id);
-            log.info("Author deleted: {}", id);
-        }
 
-        @Override
-        public List<AuthorDto> getAllAuthors () {
-        log.info("Getting a list of all authors");
-            List<Author> authors = authorRepository.findAll();
-            return authors.stream()
-                    .map(this::convertEntityToDto)
-                    .peek(authorDto -> log.info("Retrieved author: {}", authorDto))
-                    .collect(Collectors.toList());
-        }
-
-        private Author convertDtoToEntity (AuthorCreateDto authorCreateDto){
-            return Author.builder()
-                    .name(authorCreateDto.getName())
-                    .surname(authorCreateDto.getSurname())
-                    .build();
-        }
-
-        private AuthorDto convertEntityToDto (Author author){
-            List<BookDto> bookDtoList = null;
-            if (author.getBooks() != null) {
-                bookDtoList = author.getBooks().stream()
-                        .map(book -> BookDto.builder()
-                                .genre(book.getGenre().getName())
-                                .name(book.getName())
-                                .id(book.getId())
-                                .build())
-                        .toList();
-
-            }
-            AuthorDto authorDto = AuthorDto.builder()
-                    .id(author.getId())
-                    .name(author.getName())
-                    .surname(author.getSurname())
-                    .books(bookDtoList)
-                    .build();
-            return authorDto;
-        }
+    @Override
+    public AuthorDto deleteAuthor(Long id) {
+        log.info("Deleting author: {}", id);
+        authorRepository.deleteById(id);
+        log.info("Author deleted: {}", id);
+        return null;
     }
+
+    @Override
+    public List<AuthorDto> getAllAuthors() {
+        log.info("Getting a list of all authors");
+        List<Author> authors = authorRepository.findAll();
+        return authors.stream()
+                .map(this::convertEntityToDto)
+                .peek(authorDto -> log.info("Retrieved author: {}", authorDto))
+                .collect(Collectors.toList());
+    }
+
+    private Author convertDtoToEntity(AuthorCreateDto authorCreateDto) {
+        return Author.builder()
+                .name(authorCreateDto.getName())
+                .surname(authorCreateDto.getSurname())
+                .build();
+    }
+
+    private AuthorDto convertEntityToDto(Author author) {
+        List<BookDto> bookDtoList = null;
+        if (author.getBooks() != null) {
+            bookDtoList = author.getBooks().stream()
+                    .map(book -> BookDto.builder()
+                            .genre(book.getGenre().getName())
+                            .name(book.getName())
+                            .id(book.getId())
+                            .build())
+                    .toList();
+
+        }
+        AuthorDto authorDto = AuthorDto.builder()
+                .id(author.getId())
+                .name(author.getName())
+                .surname(author.getSurname())
+                .books(bookDtoList)
+                .build();
+        return authorDto;
+    }
+}
