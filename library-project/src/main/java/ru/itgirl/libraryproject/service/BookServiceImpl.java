@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     private final GenreRepository genreRepository;
 
     @Override
-    public BookDto getByNameV1(String name) {
+    public BookDto getBookByNameV1(String name) {
         log.info("Try to find book by name {}", name);
         Optional<Book> book = bookRepository.findBookByName(name);
         if (book.isPresent()) {
@@ -45,7 +45,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto getByNameV2(String name) {
+    public BookDto getBookByNameV2(String name) {
         log.info("Try to find book by name {}", name);
         Optional<Book> book = bookRepository.findBookByNameBySql(name);
         if (book.isPresent()) {
@@ -59,7 +59,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookDto getByNameV3(String name) {
+    public BookDto getBookByNameV3(String name) {
         Specification<Book> bookSpecification = Specification.where(new Specification<Book>() {
             @Override
             public Predicate toPredicate(Root<Book> root,
@@ -110,10 +110,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void deleteBook(Long id) {
+    public BookDto deleteBook(Long id) {
         log.info("Deleting book: {}", id);
         bookRepository.deleteById(id);
         log.info("Book deleted: {}", id);
+        return null;
     }
 
     @Override

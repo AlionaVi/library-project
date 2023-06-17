@@ -18,17 +18,17 @@ public class BookRestController {
 
     @GetMapping("/book")
     BookDto getBookByNameV1(@RequestParam("name") String name) {
-        return bookService.getByNameV1(name);
+        return bookService.getBookByNameV1(name);
     }
 
     @GetMapping("/book/v2")
     BookDto getBookByNameV2(@RequestParam("name") String name) {
-        return bookService.getByNameV2(name);
+        return bookService.getBookByNameV2(name);
     }
 
     @GetMapping("/book/v3")
     BookDto getBookByNameV3(@RequestParam("name") String name) {
-        return bookService.getByNameV3(name);
+        return bookService.getBookByNameV3(name);
     }
 
     @PostMapping("book/create")
@@ -42,7 +42,7 @@ public class BookRestController {
     }
 
     @DeleteMapping("/book/delete/{id}")
-    void deletedBook(@PathVariable Long id) {
-        bookService.deleteBook(id);
+    void deleteBook(@PathVariable("id") Long id) {
+       bookService.deleteBook(id);
     }
 }
